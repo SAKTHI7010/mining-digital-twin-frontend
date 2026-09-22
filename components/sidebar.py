@@ -9,7 +9,7 @@ def render_sidebar():
         st.session_state.time_window = TIME_WINDOWS[time_str]
         
         st.markdown("---")
-        st.checkbox("Mock Mode", value=st.session_state.mock_mode, key="mock_mode")
+        st.checkbox("Mock Mode", key="mock_mode")
         if st.button("Refresh Data", use_container_width=True):
             st.rerun()
         

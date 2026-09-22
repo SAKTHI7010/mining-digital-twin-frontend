@@ -1,5 +1,5 @@
 import streamlit as st
-from utils.state import get_selected_plant
+from utils.state import init_session_state, get_selected_plant
 from services.api_client import APIClient
 from components.header import render_header
 from components.sidebar import render_sidebar
@@ -7,6 +7,8 @@ from components.sidebar import render_sidebar
 st.set_page_config(page_title='Asset Health', layout='wide')
 with open("assets/css/custom.css", "r") as f:
     st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+
+init_session_state()
 
 render_header()
 render_sidebar()

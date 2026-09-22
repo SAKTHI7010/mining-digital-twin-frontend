@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-from utils.state import get_selected_plant
+from utils.state import init_session_state, get_selected_plant
 from services.api_client import APIClient
 from components.kpi_cards import render_kpi_cards
 from components.trend_charts import render_trend_chart
@@ -11,6 +11,8 @@ from components.sidebar import render_sidebar
 st.set_page_config(page_title='Executive Overview', layout='wide')
 with open("assets/css/custom.css", "r") as f:
     st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+
+init_session_state()
 
 render_header()
 render_sidebar()

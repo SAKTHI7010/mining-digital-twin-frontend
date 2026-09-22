@@ -3,10 +3,13 @@ from services.api_client import APIClient
 from components.header import render_header
 from components.sidebar import render_sidebar
 from components.advisory_panel import render_advisory_panel
+from utils.state import init_session_state
 
 st.set_page_config(page_title='Optimization', layout='wide')
 with open("assets/css/custom.css", "r") as f:
     st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+
+init_session_state()
 
 render_header()
 render_sidebar()
