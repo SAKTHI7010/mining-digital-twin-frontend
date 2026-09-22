@@ -1,7 +1,7 @@
 import streamlit as st
 from utils.state import init_session_state
 
-st.set_page_config(page_title='Mining Digital Twin', layout='wide', icon='⛏️')
+st.set_page_config(page_title='Mining Digital Twin', layout='wide', page_icon='⛏️')
 
 with open("assets/css/custom.css", "r") as f:
     st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
