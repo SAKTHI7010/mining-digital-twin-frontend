@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Process Canvas</title>
+    <style>
+        body { margin: 0; overflow: hidden; background-color: #121212; font-family: sans-serif; }
+        #canvas-container { width: 100vw; height: 100vh; }
+        #tooltip {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            display: none;
+            font-size: 12px;
+            z-index: 10;
+            border: 1px solid #555;
+        }
+        #legend {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 10px;
+            border-radius: 5px;
+            color: white;
+            font-size: 12px;
+        }
+        .leg-item { display: flex; align-items: center; margin-bottom: 5px; }
+        .color-box { width: 12px; height: 12px; margin-right: 8px; border-radius: 2px; }
+    </style>
+</head>
+<body>
+    <div id="tooltip"></div>
+    <div id="canvas-container"></div>
+    <div id="legend">
+        <div class="leg-item"><div class="color-box" style="background:#2ECC71;"></div> Normal</div>
+        <div class="leg-item"><div class="color-box" style="background:#F39C12;"></div> Caution</div>
+        <div class="leg-item"><div class="color-box" style="background:#E74C3C;"></div> Alarm</div>
+    </div>
+
+    <script>
+        // Data injected from Streamlit
+        window.plantData = {};
+        // INJECT_DATA_HERE
+    </script>
+    <script type="module" src="../js/process_scene.js"></script>
+</body>
+</html>

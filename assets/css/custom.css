@@ -1,0 +1,31 @@
+/* custom.css */
+:root {
+    --bg-dark: #121212;
+    --panel-bg: #1E1E1E;
+    --color-normal: #2ECC71;
+    --color-caution: #F39C12;
+    --color-alarm: #E74C3C;
+    --text-primary: #FFFFFF;
+    --text-secondary: #AAAAAA;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    font-family: 'Roboto', system-ui, sans-serif;
+}
+
+.metric-card {
+    background-color: var(--panel-bg);
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.status-green { border-left: 4px solid var(--color-normal); }
+.status-amber { border-left: 4px solid var(--color-caution); }
+.status-red { border-left: 4px solid var(--color-alarm); }
+
+/* Hide Streamlit elements */
+#MainMenu {visibility: hidden;}
+footer {visibility: hidden;}
