@@ -1,7 +1,5 @@
 // process_scene.js
-import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.150.1/build/three.module.js';
-import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.150.1/examples/jsm/controls/OrbitControls.js';
-
+// using globally loaded THREE and OrbitControls
 let scene, camera, renderer, controls;
 let equipmentMeshes = {};
 const raycaster = new THREE.Raycaster();
@@ -19,7 +17,7 @@ function init() {
     renderer.setSize(window.innerWidth, window.innerHeight);
     container.appendChild(renderer.domElement);
     
-    controls = new OrbitControls(camera, renderer.domElement);
+    controls = new THREE.OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
     
     const light = new THREE.DirectionalLight(0xffffff, 1);
