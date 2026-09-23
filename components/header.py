@@ -11,7 +11,7 @@ def render_header():
         set_selected_plant(plant)
     with col2:
         mode = "Mock" if st.session_state.mock_mode else "Live"
-        st.markdown(f"<div style='text-align:center; padding:10px; background-color:#333; border-radius:5px;'>Mode: <b>{mode}</b></div>", unsafe_allow_html=True)
+        st.markdown(f"<div style='text-align:center; padding:10px; background-color:#333; color:white; border-radius:5px;'>Mode: <b>{mode}</b></div>", unsafe_allow_html=True)
     with col3:
         st.markdown(f"<div style='text-align:right; margin-bottom: 5px;'>{datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}</div>", unsafe_allow_html=True)
         render_api_status()
