@@ -7,8 +7,8 @@ const mouse = new THREE.Vector2();
 
 function init() {
     const container = document.getElementById('canvas-container');
-    const width = container.clientWidth || window.innerWidth;
-    const height = container.clientHeight || window.innerHeight;
+    const width = container.clientWidth || window.innerWidth || 800;
+    const height = container.clientHeight || window.innerHeight || 600;
     
     scene = new THREE.Scene();
     scene.background = new THREE.Color(0xf0f2f6);
@@ -86,8 +86,8 @@ function createEquipment() {
 
 function onWindowResize() {
     const container = document.getElementById('canvas-container');
-    const width = container.clientWidth || window.innerWidth;
-    const height = container.clientHeight || window.innerHeight;
+    const width = container.clientWidth || window.innerWidth || 800;
+    const height = container.clientHeight || window.innerHeight || 600;
     camera.aspect = width / height;
     camera.updateProjectionMatrix();
     renderer.setSize(width, height);
@@ -95,10 +95,10 @@ function onWindowResize() {
 
 function onMouseMove(event) {
     const container = document.getElementById('canvas-container');
-    const width = container.clientWidth || window.innerWidth;
-    const height = container.clientHeight || window.innerHeight;
+    const width = container.clientWidth || window.innerWidth || 800;
+    const height = container.clientHeight || window.innerHeight || 600;
     mouse.x = (event.clientX / width) * 2 - 1;
-    mouse.y = -(event.clientY / height) * 2 + 1;
+    mouse.y = -(event.clientY / height) * 2 - 1; // fixed inversion
 }
 
 function updateColorsFromData() {
@@ -131,7 +131,7 @@ function animate() {
         const obj = intersects[0].object;
         tooltip.style.display = 'block';
         tooltip.style.left = mouse.x * window.innerWidth / 2 + window.innerWidth / 2 + 10 + 'px';
-        tooltip.style.top = -mouse.y * window.innerHeight / 2 + window.innerHeight / 2 + 10 + 'px';
+        tooltip.style.top = mouse.y * window.innerHeight / 2 + window.innerHeight / 2 + 10 + 'px';
         tooltip.innerHTML = `<strong>${obj.userData.name}</strong><br>ID: ${obj.userData.id}`;
     } else {
         tooltip.style.display = 'none';
@@ -140,8 +140,5 @@ function animate() {
     renderer.render(scene, camera);
 }
 
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-} else {
-    init();
-}
+// Streamlit iframe can sometimes block or delay DOMContentLoaded, so wait 500ms to be safe
+setTimeout(init, 500);
